@@ -82,13 +82,21 @@ cmake --build build
 ./build/main --benchmark_out=plots/results.json --benchmark_out_format=json
 ```
 
-Также можно использовать CMake-цель:
+Для более удобного запуска в проекте есть готовые скрипты в каталоге `scripts/`.
+
+Обычный запуск бенчмарков с сохранением результатов:
 
 ```bash
-cmake --build build --target run_simple
+./scripts/run_simple.sh
 ```
 
-Эта цель тоже запускает бенчмарки и сохраняет результаты в `plots/results.json`.
+Запуск с попыткой зафиксировать частоту CPU и отключить Turbo Boost:
+
+```bash
+./scripts/run_fixed_freq.sh
+```
+
+Этот вариант полезен для более стабильных замеров, но требует `cpupower` и `sudo`.
 
 ## Построение графиков
 
@@ -146,21 +154,23 @@ python3 pyscript/graphics.py plots/results.json plots
 
 ## Дополнительно: flamegraph
 
-В проекте есть CMake-цель для построения flamegraph:
+Для построения flamegraph используется отдельный скрипт:
 
 ```bash
-cmake --build build --target flamegraph
+./scripts/run_flamegraph.sh
 ```
 
 Для этого дополнительно нужны:
 
 - `perf`;
 - утилиты `FlameGraph`;
-- в `CMakeLists.txt` ожидается каталог:
+- по умолчанию скрипт ожидает каталог:
 
 ```bash
-/home/artem/FlameGraph
+~/FlameGraph
 ```
+
+При необходимости путь можно переопределить через переменную окружения `FLAMEGRAPH_DIR`.
 
 Результат сохраняется в:
 
@@ -174,10 +184,11 @@ plots/flamegraph.svg
 
 ## Полезные файлы проекта
 
-- `CMakeLists.txt` — сборка проекта и кастомные цели;
+- `CMakeLists.txt` — сборка проекта;
 - `src/main.cpp` — benchmark-сценарии;
 - `src/AVL.cpp` — реализация дерева;
 - `inc/AVL.h` — интерфейс дерева;
+- `scripts/` — скрипты для запуска бенчмарков и flamegraph;
 - `pyscript/graphics.py` — построение графиков;
 - `plots/results.json` — результаты benchmark-запуска;
 - `plots/*.png` — изображения графиков.
@@ -190,14 +201,14 @@ plots/flamegraph.svg
 ```bash
 cmake -S . -B build
 cmake --build build
-./build/main --benchmark_out=plots/results.json --benchmark_out_format=json
+./scripts/run_simple.sh
 python3 pyscript/graphics.py plots/results.json plots
 ```
 
 ## Примечание
 
-В проекте есть дополнительные CMake-цели для анализа и автоматизации, но основной рабочий путь сейчас такой:
+Основной рабочий путь сейчас такой:
 
 1. собрать проект;
-2. запустить `main` с сохранением результатов в `plots/results.json`;
+2. запустить `./scripts/run_simple.sh` или `./scripts/run_fixed_freq.sh`;
 3. построить графики через `pyscript/graphics.py`.

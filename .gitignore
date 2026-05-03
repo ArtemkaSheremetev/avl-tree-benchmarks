@@ -12,17 +12,17 @@
 /CTestTestfile.cmake
 /Testing/
 
-# Generated scripts and binaries
+# Generated binaries and profiling artifacts
 /main
-/run_benchmarks_simple.sh
-/run_benchmarks_with_fixed_freq.sh
-/run_perf_flamegraph.sh
 *.out
 *.o
 *.obj
 *.so
 *.a
 *.exe
+perf.data
+perf.out
+perf.folded
 
 # Benchmark results and generated plots
 /plots/*.png
