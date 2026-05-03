@@ -1,0 +1,39 @@
+# Build directories
+/build/
+/all/
+/CMakeFiles/
+/_deps/
+
+# CMake generated files
+/CMakeCache.txt
+/cmake_install.cmake
+/Makefile
+/compile_commands.json
+/CTestTestfile.cmake
+/Testing/
+
+# Generated scripts and binaries
+/main
+/run_benchmarks_simple.sh
+/run_benchmarks_with_fixed_freq.sh
+/run_perf_flamegraph.sh
+*.out
+*.o
+*.obj
+*.so
+*.a
+*.exe
+
+# Benchmark results and generated plots
+/plots/*.png
+/plots/*.svg
+/plots/results.json
+
+# Python virtual environments and caches
+/.venv/
+__pycache__/
+*.pyc
+
+# IDE files
+/.vscode/
+/.idea/
