@@ -102,10 +102,10 @@ python3 pyscript/graphics.py plots/results.json plots
 
 Примеры файлов:
 
+- `plots/bm_avl_build_random_case_asymptotic_linear.png`
+- `plots/bm_avl_insert_single_operation_asymptotic_linear.png`
 - `plots/bm_avl_find_existing_asymptotic_linear.png`
-- `plots/bm_avl_find_existing_asymptotic_log.png`
-- `plots/bm_avl_find_leaf_asymptotic_linear.png`
-- `plots/bm_avl_find_leaf_asymptotic_log.png`
+- `plots/bm_avl_delete_single_operation_asymptotic_linear.png`
 
 ## Как посмотреть графики
 
@@ -115,6 +115,34 @@ python3 pyscript/graphics.py plots/results.json plots
 - открыть нужные `.png` файлы любым просмотрщиком изображений.
 
 Если графики уже были сгенерированы ранее, их можно посмотреть сразу в каталоге `plots/`.
+
+## Примеры полученных графиков
+
+Ниже приведены примеры графиков, которые строятся по результатам бенчмарков.
+
+### Построение дерева: random case
+
+Этот график показывает время построения `AVL`-дерева при вставке элементов в случайном порядке. Верхняя часть отображает реальные замеры и аппроксимацию ожидаемой сложности, нижняя часть показывает нормализованное время.
+
+![Build Random Case](plots/bm_avl_build_random_case_asymptotic_linear.png)
+
+### Одиночная вставка
+
+На этом графике измеряется время одной операции `insert` в уже подготовленное дерево. Для `AVL`-дерева ожидается логарифмический рост времени при увеличении числа элементов.
+
+![Insert Single Operation](plots/bm_avl_insert_single_operation_asymptotic_linear.png)
+
+### Поиск существующего элемента
+
+Этот график показывает поведение операции `find` для существующих ключей. По нему удобно смотреть, насколько результаты согласуются с ожидаемой сложностью `O(log n)`.
+
+![Find Existing](plots/bm_avl_find_existing_asymptotic_linear.png)
+
+### Одиночное удаление
+
+Здесь показано время одной операции `remove` из дерева после предварительного заполнения. Это позволяет оценить практическое поведение удаления на разных размерах входных данных.
+
+![Delete Single Operation](plots/bm_avl_delete_single_operation_asymptotic_linear.png)
 
 ## Дополнительно: flamegraph
 
@@ -139,6 +167,10 @@ cmake --build build --target flamegraph
 ```bash
 plots/flamegraph.svg
 ```
+
+Ниже приведен пример flamegraph, построенного для одного из benchmark-сценариев. Он показывает, в каких функциях программа проводит больше всего времени во время выполнения.
+
+![Flamegraph](plots/flamegraph.svg)
 
 ## Полезные файлы проекта
 
