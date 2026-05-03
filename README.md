@@ -124,25 +124,25 @@ python3 pyscript/graphics.py plots/results.json plots
 
 Этот график показывает время построения `AVL`-дерева при вставке элементов в случайном порядке. Верхняя часть отображает реальные замеры и аппроксимацию ожидаемой сложности, нижняя часть показывает нормализованное время.
 
-![Build Random Case](plots/bm_avl_build_random_case_asymptotic_linear.png)
+![Build Random Case](exampleplots/bm_avl_build_random_case_asymptotic_linear.png)
 
 ### Одиночная вставка
 
 На этом графике измеряется время одной операции `insert` в уже подготовленное дерево. Для `AVL`-дерева ожидается логарифмический рост времени при увеличении числа элементов.
 
-![Insert Single Operation](plots/bm_avl_insert_single_operation_asymptotic_linear.png)
+![Insert Single Operation](exampleplots/bm_avl_insert_single_operation_asymptotic_linear.png)
 
 ### Поиск существующего элемента
 
 Этот график показывает поведение операции `find` для существующих ключей. По нему удобно смотреть, насколько результаты согласуются с ожидаемой сложностью `O(log n)`.
 
-![Find Existing](plots/bm_avl_find_existing_asymptotic_linear.png)
+![Find Existing](exampleplots/bm_avl_find_existing_asymptotic_linear.png)
 
 ### Одиночное удаление
 
 Здесь показано время одной операции `remove` из дерева после предварительного заполнения. Это позволяет оценить практическое поведение удаления на разных размерах входных данных.
 
-![Delete Single Operation](plots/bm_avl_delete_single_operation_asymptotic_linear.png)
+![Delete Single Operation](exampleplots/bm_avl_delete_single_operation_asymptotic_linear.png)
 
 ## Дополнительно: flamegraph
 
@@ -170,7 +170,7 @@ plots/flamegraph.svg
 
 Ниже приведен пример flamegraph, построенного для одного из benchmark-сценариев. Он показывает, в каких функциях программа проводит больше всего времени во время выполнения.
 
-![Flamegraph](plots/flamegraph.svg)
+![Flamegraph](exampleplots/flamegraph.svg)
 
 ## Полезные файлы проекта
 
@@ -181,6 +181,7 @@ plots/flamegraph.svg
 - `pyscript/graphics.py` — построение графиков;
 - `plots/results.json` — результаты benchmark-запуска;
 - `plots/*.png` — изображения графиков.
+- `exampleplots/` — примеры графиков и flamegraph для README.
 
 ## Быстрый сценарий запуска
 

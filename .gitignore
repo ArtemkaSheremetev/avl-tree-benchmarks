@@ -28,6 +28,9 @@
 /plots/*.png
 /plots/*.svg
 /plots/results.json
+!/exampleplots/
+!/exampleplots/*.png
+!/exampleplots/*.svg
 
 # Python virtual environments and caches
 /.venv/
